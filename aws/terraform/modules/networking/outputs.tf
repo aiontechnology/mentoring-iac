@@ -12,7 +12,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Terraform
-\.terraform
-terraform.tfstate.d
-workspaces
+output "sg" {
+  value = {
+    db = aws_security_group.db_sg.id
+    server = aws_security_group.server_sg.id
+    ui = aws_security_group.ui_sg.id
+    bastion = aws_security_group.bastion_sg.id
+  }
+}
+
+output "subnets" {
+  value = {
+    db_subnets = [aws_subnet.db1.id, aws_subnet.db2.id]
+    ecs_subnets = [aws_subnet.ecs1.id, aws_subnet.ecs2.id]
+    public_subnets = [aws_subnet.public1.id, aws_subnet.public2.id]
+  }
+}
+
+output "vpc" {
+  value = aws_vpc.vpc
+}

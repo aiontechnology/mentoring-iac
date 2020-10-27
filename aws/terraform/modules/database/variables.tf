@@ -12,7 +12,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Terraform
-\.terraform
-terraform.tfstate.d
-workspaces
+variable "environment" {
+  type = string
+}
+
+variable "name" {
+  type = string
+}
+
+variable "sg" {
+  type = any
+}
+
+variable "subnet_ids" {
+  type = list(string)
+}

@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Terraform
-\.terraform
-terraform.tfstate.d
-workspaces
+output "api_url" {
+  value = aws_api_gateway_stage.rest-stage.invoke_url
+}
