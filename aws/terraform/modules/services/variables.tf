@@ -12,7 +12,42 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Terraform
-\.terraform
-terraform.tfstate.d
-workspaces
+variable "cluster_id" {
+  type = string
+}
+
+variable "db_config" {
+  type = any
+}
+
+variable "docker_tag" {
+  type = string
+}
+
+variable "environment" {
+  type = string
+}
+
+variable "execution_role_arn" {
+  type = string
+}
+
+variable "name" {
+  type = string
+}
+
+variable "sg" {
+  type = any
+}
+
+variable "subnet_ids" {
+  type = list(string)
+}
+
+variable "vpc" {
+  type = any
+}
+
+variable "openapi_path" {
+  type = string
+}
