@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Terraform
-\.terraform
-terraform.tfstate.d
-workspaces
+output "db_config" {
+  value = aws_db_instance.database
+}

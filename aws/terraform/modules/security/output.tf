@@ -12,7 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Terraform
-\.terraform
-terraform.tfstate.d
-workspaces
+output "cognito_client_id" {
+  value = aws_cognito_user_pool_client.user_pool_client.id
+}
+
+output "cognito_endpoint" {
+  value = aws_cognito_user_pool.user_pool.endpoint
+}

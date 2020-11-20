@@ -12,7 +12,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Terraform
-\.terraform
-terraform.tfstate.d
-workspaces
+output "api_url" {
+  value = module.services.api_url
+}
+
+output "cognito_client_id" {
+  value = module.security.cognito_client_id
+}
+
+output "cognito_endpoint" {
+  value = module.security.cognito_endpoint
+}
+
+output "db_password" {
+  value = module.database.db_config.password
+}
+
+output "ui_lb_dns_name" {
+  value = module.ui.lb_dns
+}

@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Terraform
-\.terraform
-terraform.tfstate.d
-workspaces
+provider "aws" {
+  region = var.region
+  profile = "hhf"
+}
