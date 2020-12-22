@@ -32,3 +32,9 @@ output "subnets" {
 output "vpc" {
   value = aws_vpc.vpc
 }
+
+output "discovery" {
+  value = {
+    id = aws_service_discovery_private_dns_namespace.service-discovery.id
+  }
+}

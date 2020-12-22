@@ -12,18 +12,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-####################################################################################################
+################################################################################
 # Define locals
-####################################################################################################
+################################################################################
 locals {
   resource_tag = "${var.name}-${var.environment}"
 }
 
-####################################################################################################
-# Define ECS execution IAM role
-####################################################################################################
-resource "aws_iam_role" "ecs_task_execution_role" {
-  name = "${local.resource_tag}-ecs-execution-role"
+################################################################################
+# Define ECS execution IAM roles
+################################################################################
+resource "aws_iam_role" "service_task_execution_role" {
+  name = "${local.resource_tag}-service-execution-role"
 
   assume_role_policy = <<EOF
 {
@@ -42,14 +42,43 @@ resource "aws_iam_role" "ecs_task_execution_role" {
 EOF
 }
 
-resource "aws_iam_role_policy_attachment" "ecs-task-execution-role-policy-attachment" {
-  role       = aws_iam_role.ecs_task_execution_role.name
+resource "aws_iam_role_policy_attachment" "ecs-task-execution-role-policy-attachment-server" {
+  role       = aws_iam_role.service_task_execution_role.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
 }
 
-####################################################################################################
+resource "aws_iam_role" "lpg_task_execution_role" {
+  name = "${local.resource_tag}-lpg-execution-role"
+
+  assume_role_policy = <<EOF
+{
+ "Version": "2012-10-17",
+ "Statement": [
+   {
+     "Action": "sts:AssumeRole",
+     "Principal": {
+       "Service": "ecs-tasks.amazonaws.com"
+     },
+     "Effect": "Allow",
+     "Sid": ""
+   }
+ ]
+}
+EOF
+}
+
+resource "aws_iam_role_policy_attachment" "ecs-task-execution-role-policy-attachment-lpg1" {
+  role       = aws_iam_role.lpg_task_execution_role.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
+}
+resource "aws_iam_role_policy_attachment" "ecs-task-execution-role-policy-attachment-lpg2" {
+  role       = aws_iam_role.lpg_task_execution_role.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess"
+}
+
+################################################################################
 # Create cluster
-####################################################################################################
+################################################################################
 resource "aws_ecs_cluster" "cluster" {
   name = "${local.resource_tag}-cluster"
 }
