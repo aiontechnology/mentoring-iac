@@ -51,7 +51,12 @@ variable "token_redirect" {
   type = string
 }
 
-variable "openapi_path" {
-  description = "Path to the Open API secification file"
+variable "server_openapi_path" {
+  description = "Path to the Open API secification file for the server"
+  type = string
+}
+
+variable "lpg_openapi_path" {
+  description = "Path to the Open API secification file for the lpg"
   type = string
 }

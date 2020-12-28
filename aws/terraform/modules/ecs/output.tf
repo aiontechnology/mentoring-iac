@@ -16,6 +16,10 @@ output "cluster_id" {
   value = aws_ecs_cluster.cluster.id
 }
 
-output "execution-role" {
-  value = aws_iam_role.ecs_task_execution_role
+output "service-execution-role" {
+  value = aws_iam_role.service_task_execution_role
+}
+
+output "lpg-execution-role" {
+  value = aws_iam_role.lpg_task_execution_role
 }

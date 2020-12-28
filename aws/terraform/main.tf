@@ -39,12 +39,13 @@ module "services" {
   db_config = module.database.db_config
   docker_tag = var.docker_tag
   environment = var.environment
-  execution_role_arn = module.ecs.execution-role.arn
+  execution_role_arn = module.ecs.service-execution-role.arn
   name = var.name
-  openapi_path = var.openapi_path
+  openapi_path = var.server_openapi_path
   sg = module.networking.sg
   subnet_ids = module.networking.subnets.ecs_subnets
   vpc = module.networking.vpc
+  discovery_id = module.networking.discovery.id
 }
 
 module "security" {
@@ -68,11 +69,26 @@ module "ui" {
   cognito_client_id = module.security.cognito_client_id
   docker_tag = var.docker_tag
   environment = var.environment
-  execution_role_arn = module.ecs.execution-role.arn
+  execution_role_arn = module.ecs.service-execution-role.arn
   logout_redirect = var.logout_redirect
   name = var.name
   sg = module.networking.sg
   subnet_ids = module.networking.subnets.public_subnets
   token_redirect = var.token_redirect
   vpc = module.networking.vpc
+}
+
+module "lpg" {
+  source = "./modules/lpg"
+
+  cluster_id = module.ecs.cluster_id
+  docker_tag = var.docker_tag
+  environment = var.environment
+  execution_role_arn = module.ecs.lpg-execution-role.arn
+  name = var.name
+  openapi_path = var.lpg_openapi_path
+  sg = module.networking.sg
+  subnet_ids = module.networking.subnets.ecs_subnets
+  vpc = module.networking.vpc
+  discovery_id = module.networking.discovery.id
 }

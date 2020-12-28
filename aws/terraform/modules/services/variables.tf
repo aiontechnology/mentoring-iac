@@ -51,3 +51,7 @@ variable "vpc" {
 variable "openapi_path" {
   type = string
 }
+
+variable "discovery_id" {
+  type = string
+}
