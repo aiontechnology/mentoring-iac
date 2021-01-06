@@ -12,7 +12,42 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-provider "aws" {
-  region = var.region
-  profile = "hhf-whitney"
+variable "cluster_id" {
+  type = string
+}
+
+variable "docker_tag" {
+  type = string
+}
+
+variable "environment" {
+  type = string
+}
+
+variable "execution_role_arn" {
+  type = string
+}
+
+variable "name" {
+  type = string
+}
+
+variable "sg" {
+  type = any
+}
+
+variable "subnet_ids" {
+  type = list(string)
+}
+
+variable "vpc" {
+  type = any
+}
+
+variable "openapi_path" {
+  type = string
+}
+
+variable "discovery_id" {
+  type = string
 }
