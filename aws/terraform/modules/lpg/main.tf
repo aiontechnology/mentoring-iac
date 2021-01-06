@@ -186,7 +186,7 @@ resource "aws_api_gateway_vpc_link" "rest-api-vpc-link" {
 resource "aws_api_gateway_stage" "rest-stage" {
   deployment_id = aws_api_gateway_deployment.rest-api-deployment.id
   rest_api_id = aws_api_gateway_rest_api.rest-api.id
-  stage_name = "${local.resource_tag}-deployment"
+  stage_name = "${local.resource_tag}-lpg-deployment"
   cache_cluster_size = "0.5"
   variables = {
     lb_url = aws_lb.lpg-lb.dns_name
