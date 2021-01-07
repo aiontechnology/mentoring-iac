@@ -78,6 +78,18 @@ resource "aws_cognito_user_pool_domain" "user_pool_domain" {
   user_pool_id = aws_cognito_user_pool.user_pool.id
 }
 
+resource "aws_cognito_user_group" "system_admin" {
+  name = "SYSTEM_ADMIN"
+  description = "System Administrator"
+  user_pool_id = aws_cognito_user_pool.user_pool.id
+}
+
+resource "aws_cognito_user_group" "program_admin" {
+  name = "PROGRAM_ADMIN"
+  description = "Program Administrator"
+  user_pool_id = aws_cognito_user_pool.user_pool.id
+}
+
 ################################################################################
 # Define bastion host
 ################################################################################

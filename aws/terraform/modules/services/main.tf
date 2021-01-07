@@ -182,7 +182,7 @@ resource "aws_api_gateway_stage" "rest-stage" {
   stage_name = "${local.resource_tag}-service-deployment"
   variables = {
     lb_url = aws_lb.server-lb.dns_name
-    api_url = trimprefix("${aws_api_gateway_deployment.rest-api-deployment.invoke_url}${local.resource_tag}-deployment", "https://")
+    api_url = trimprefix("${aws_api_gateway_deployment.rest-api-deployment.invoke_url}${local.resource_tag}-service-deployment", "https://")
     vpc_link_id = aws_api_gateway_vpc_link.rest-api-vpc-link.id
   }
 }
