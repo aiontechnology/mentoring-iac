@@ -64,7 +64,7 @@ resource "aws_ecs_task_definition" "lpg" {
       },
       {
         "name": "SPRING_PROFILES_ACTIVE",
-        "value": "production"
+        "value": "${var.environment}"
       }
     ],
     "portMappings": [

@@ -61,6 +61,10 @@ resource "aws_ecs_task_definition" "server" {
       {
         "name": "SPRING_DATASOURCE_PASSWORD",
         "value": "${var.db_config.password}"
+      },
+      {
+        "name": "SPRING_PROFILES_ACTIVE",
+        "value": "${var.environment}"
       }
     ],
     "portMappings": [
