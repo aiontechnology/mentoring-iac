@@ -1,4 +1,4 @@
-# Copyright 2020 Aion Technology LLC
+# Copyright 2020-2021 Aion Technology LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -55,11 +55,15 @@ resource "aws_ecs_task_definition" "ui" {
     "secrets": [],
     "environment": [
       {
+        "name": "IS_PRODUCTION",
+        "value": "true"
+      },
+      {
         "name": "TOKEN_REDIRECT",
         "value": "${var.token_redirect}"
       },
       {
-        "name": "LOGOUT_REDIRECT",
+        "name": "LOGOUT_TOKEN_REDIRECT",
         "value": "${var.logout_redirect}"
       },
       {
@@ -67,8 +71,16 @@ resource "aws_ecs_task_definition" "ui" {
         "value": "${var.api_url}"
       },
       {
+        "name": "LPG_URL",
+        "value": "${var.lpg_url}"
+      },
+      {
         "name": "COGNITO_CLIENT_ID",
         "value": "${var.cognito_client_id}"
+      },
+      {
+        "name": "COGNITO_BASE_URL",
+        "value": "${var.cognito_base_url}"
       }
     ],
     "portMappings": [

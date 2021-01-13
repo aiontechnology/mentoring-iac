@@ -1,4 +1,4 @@
-# Copyright 2020 Aion Technology LLC
+# Copyright 2020-2021 Aion Technology LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -63,6 +63,7 @@ module "ui" {
   source = "./modules/ui"
 
   api_url = module.services.api_url
+  lpg_url = module.lpg.api_url
   certificate_domain_name = var.certificate_domain_name
   cluster_id = module.ecs.cluster_id
   cognito_base_url = module.security.cognito_endpoint
@@ -91,4 +92,5 @@ module "lpg" {
   subnet_ids = module.networking.subnets.ecs_subnets
   vpc = module.networking.vpc
   discovery_id = module.networking.discovery.id
+  services_api_url = module.services.api_lb_url
 }

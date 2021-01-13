@@ -1,4 +1,4 @@
-# Copyright 2020 Aion Technology LLC
+# Copyright 2020-2021 Aion Technology LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,5 +17,5 @@ output "cognito_client_id" {
 }
 
 output "cognito_endpoint" {
-  value = aws_cognito_user_pool.user_pool.endpoint
+  value = "mentorsuccess-${local.resource_tag}.auth.us-west-2.amazoncognito.com"
 }
