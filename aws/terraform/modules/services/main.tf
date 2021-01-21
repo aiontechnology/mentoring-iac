@@ -1,4 +1,4 @@
-# Copyright 2020 Aion Technology LLC
+# Copyright 2020-2021 Aion Technology LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -61,6 +61,10 @@ resource "aws_ecs_task_definition" "server" {
       {
         "name": "SPRING_DATASOURCE_PASSWORD",
         "value": "${var.db_config.password}"
+      },
+      {
+        "name": "SPRING_PROFILES_ACTIVE",
+        "value": "${var.environment}"
       }
     ],
     "portMappings": [
@@ -163,7 +167,7 @@ resource "aws_api_gateway_rest_api" "rest-api" {
   body = data.template_file.swagger_definition.rendered
 
   endpoint_configuration {
-    types = ["REGIONAL"]
+    types = ["EDGE"]
   }
 }
 

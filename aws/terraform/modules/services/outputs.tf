@@ -1,4 +1,4 @@
-# Copyright 2020 Aion Technology LLC
+# Copyright 2020-2021 Aion Technology LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,4 +14,8 @@
 
 output "api_url" {
   value = aws_api_gateway_stage.rest-stage.invoke_url
+}
+
+output "api_lb_url" {
+  value = "http://${aws_lb.server-lb.dns_name}"
 }

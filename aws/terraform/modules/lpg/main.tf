@@ -1,4 +1,4 @@
-# Copyright 2020 Aion Technology LLC
+# Copyright 2020-2021 Aion Technology LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -64,7 +64,23 @@ resource "aws_ecs_task_definition" "lpg" {
       },
       {
         "name": "SPRING_PROFILES_ACTIVE",
-        "value": "production"
+        "value": "${var.environment}"
+      },
+      {
+        "name": "SPRING_CLOUD_DISCOVERY_CLIENT_SIMPLE_INSTANCES_BOOKS_0_URI",
+        "value": "${var.services_api_url}"
+      },
+      {
+        "name": "SPRING_CLOUD_DISCOVERY_CLIENT_SIMPLE_INSTANCES_GAMES_0_URI",
+        "value": "${var.services_api_url}"
+      },
+      {
+        "name": "SPRING_CLOUD_DISCOVERY_CLIENT_SIMPLE_INSTANCES_SCHOOLS_0_URI",
+        "value": "${var.services_api_url}"
+      },
+      {
+        "name": "SPRING_CLOUD_DISCOVERY_CLIENT_SIMPLE_INSTANCES_STUDENTS_0_URI",
+        "value": "${var.services_api_url}"
       }
     ],
     "portMappings": [
@@ -168,7 +184,7 @@ resource "aws_api_gateway_rest_api" "rest-api" {
   body = data.template_file.swagger_definition.rendered
 
   endpoint_configuration {
-    types = ["REGIONAL"]
+    types = ["EDGE"]
   }
 
   binary_media_types = [ "*/*" ]

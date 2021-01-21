@@ -1,4 +1,4 @@
-# Copyright 2020 Aion Technology LLC
+# Copyright 2020-2021 Aion Technology LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -49,5 +49,10 @@ variable "openapi_path" {
 }
 
 variable "discovery_id" {
+  type = string
+}
+
+# The URL of the main services API gateway.
+variable "services_api_url" {
   type = string
 }
