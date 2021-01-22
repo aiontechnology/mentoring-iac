@@ -12,6 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+variable "region" {
+  type = string
+}
+
 variable "cluster_id" {
   type = string
 }
@@ -54,5 +58,9 @@ variable "discovery_id" {
 
 # The URL of the main services API gateway.
 variable "services_api_url" {
+  type = string
+}
+
+variable "cognito_pool_id" {
   type = string
 }

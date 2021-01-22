@@ -46,4 +46,6 @@ resource "aws_db_instance" "database" {
   apply_immediately = true
   backup_window = "11:27-11:57"
   backup_retention_period = 7
+  delete_automated_backups = true
+  deletion_protection = true
 }
