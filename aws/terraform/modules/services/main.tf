@@ -42,12 +42,12 @@ resource "aws_ecs_task_definition" "server" {
   container_definitions = <<DEFINITION
 [
   {
-    "image": "661143960593.dkr.ecr.us-west-2.amazonaws.com/mentorsuccess-server:${var.docker_tag}",
+    "image": "661143960593.dkr.ecr.${var.region}.amazonaws.com/mentorsuccess-server:${var.docker_tag}",
     "name": "mentorsuccess-server",
     "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-region" : "us-west-2",
+                    "awslogs-region" : "${var.region}",
                     "awslogs-group" : "${aws_cloudwatch_log_group.ecs-log-group.name}",
                     "awslogs-stream-prefix" : "${local.resource_tag}-server"
                 }
@@ -65,6 +65,10 @@ resource "aws_ecs_task_definition" "server" {
       {
         "name": "SPRING_PROFILES_ACTIVE",
         "value": "${var.environment}"
+      },
+      {
+        "name": "SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWK_SET_URI",
+        "value": "https://cognito-idp.${var.region}.amazonaws.com/${var.cognito_pool_id}/.well-known/jwks.json"
       }
     ],
     "portMappings": [
