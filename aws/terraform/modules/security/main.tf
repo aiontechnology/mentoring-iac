@@ -50,6 +50,17 @@ resource "aws_cognito_user_pool" "user_pool" {
       max_length = 2048
     }
   }
+  schema {
+    name = "school_uuid"
+    attribute_data_type = "String"
+    developer_only_attribute = false
+    mutable = true
+    required = false
+    string_attribute_constraints {
+      min_length = 0
+      max_length = 255
+    }
+  }
   admin_create_user_config {
     allow_admin_create_user_only = true
     invite_message_template {
@@ -69,6 +80,7 @@ resource "aws_cognito_user_pool_client" "user_pool_client" {
   allowed_oauth_flows = ["implicit"]
   allowed_oauth_flows_user_pool_client = true
   allowed_oauth_scopes = ["openid", "profile"]
+  read_attributes = [ "custom:school_uuid" ]
   callback_urls = [var.token_redirect]
   logout_urls = [var.logout_redirect]
 }

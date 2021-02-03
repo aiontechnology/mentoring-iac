@@ -47,6 +47,11 @@ resource "aws_iam_role_policy_attachment" "ecs-task-execution-role-policy-attach
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
 }
 
+resource "aws_iam_role_policy_attachment" "cognito-power-user-policy-attacment-server" {
+  role       = aws_iam_role.service_task_execution_role.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonCognitoPowerUser"
+}
+
 resource "aws_iam_role" "lpg_task_execution_role" {
   name = "${local.resource_tag}-lpg-execution-role"
 
