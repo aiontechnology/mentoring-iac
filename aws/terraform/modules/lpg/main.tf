@@ -81,6 +81,10 @@ resource "aws_ecs_task_definition" "lpg" {
       {
         "name": "SPRING_CLOUD_DISCOVERY_CLIENT_SIMPLE_INSTANCES_STUDENTS_0_URI",
         "value": "${var.services_api_url}"
+      },
+      {
+        "name": "SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWK_SET_URI",
+        "value": "https://cognito-idp.${var.region}.amazonaws.com/${var.cognito_pool_id}/.well-known/jwks.json"
       }
     ],
     "portMappings": [

@@ -32,9 +32,21 @@ module "database" {
   subnet_ids = module.networking.subnets.db_subnets
 }
 
+module "security" {
+  source = "./modules/security"
+  name = var.name
+  environment = var.environment
+  token_redirect = var.token_redirect
+  logout_redirect = var.logout_redirect
+  public_key = var.public_key
+  sg = module.networking.sg
+  subnet_ids = module.networking.subnets.public_subnets
+}
+
 module "services" {
   source = "./modules/services"
 
+  region = var.region
   cluster_id = module.ecs.cluster_id
   db_config = module.database.db_config
   docker_tag = var.docker_tag
@@ -46,17 +58,25 @@ module "services" {
   subnet_ids = module.networking.subnets.ecs_subnets
   vpc = module.networking.vpc
   discovery_id = module.networking.discovery.id
+  cognito_pool_id = module.security.cognito_pool_id
 }
 
-module "security" {
-  source = "./modules/security"
-  name = var.name
+module "lpg" {
+  source = "./modules/lpg"
+
+  region = var.region
+  cluster_id = module.ecs.cluster_id
+  docker_tag = var.docker_tag
   environment = var.environment
-  token_redirect = var.token_redirect
-  logout_redirect = var.logout_redirect
-  public_key = var.public_key
+  execution_role_arn = module.ecs.lpg-execution-role.arn
+  name = var.name
+  openapi_path = var.lpg_openapi_path
   sg = module.networking.sg
-  subnet_ids = module.networking.subnets.public_subnets
+  subnet_ids = module.networking.subnets.ecs_subnets
+  vpc = module.networking.vpc
+  discovery_id = module.networking.discovery.id
+  services_api_url = module.services.api_lb_url
+  cognito_pool_id = module.security.cognito_pool_id
 }
 
 module "ui" {
@@ -77,20 +97,4 @@ module "ui" {
   subnet_ids = module.networking.subnets.public_subnets
   token_redirect = var.token_redirect
   vpc = module.networking.vpc
-}
-
-module "lpg" {
-  source = "./modules/lpg"
-
-  cluster_id = module.ecs.cluster_id
-  docker_tag = var.docker_tag
-  environment = var.environment
-  execution_role_arn = module.ecs.lpg-execution-role.arn
-  name = var.name
-  openapi_path = var.lpg_openapi_path
-  sg = module.networking.sg
-  subnet_ids = module.networking.subnets.ecs_subnets
-  vpc = module.networking.vpc
-  discovery_id = module.networking.discovery.id
-  services_api_url = module.services.api_lb_url
 }
