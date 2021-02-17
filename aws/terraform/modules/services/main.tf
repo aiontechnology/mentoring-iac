@@ -69,6 +69,10 @@ resource "aws_ecs_task_definition" "server" {
       {
         "name": "SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWK_SET_URI",
         "value": "https://cognito-idp.${var.region}.amazonaws.com/${var.cognito_pool_id}/.well-known/jwks.json"
+      },
+      {
+        "name": "AWS_COGNITO_USERPOOLID",
+        "value": "${var.cognito_pool_id}"
       }
     ],
     "portMappings": [
