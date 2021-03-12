@@ -67,6 +67,10 @@ resource "aws_ecs_task_definition" "lpg" {
         "value": "${var.environment}"
       },
       {
+        "name": "ENVIRONMENT_NAME",
+        "value": "${var.environment}"
+      },
+      {
         "name": "SPRING_CLOUD_DISCOVERY_CLIENT_SIMPLE_INSTANCES_BOOKS_0_URI",
         "value": "${var.services_api_url}"
       },
