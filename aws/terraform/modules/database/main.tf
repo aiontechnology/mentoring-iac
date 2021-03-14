@@ -34,7 +34,7 @@ resource "aws_db_subnet_group" "db_subnet_group" {
 resource "aws_db_instance" "database" {
   allocated_storage = 10
   engine = "postgres"
-  engine_version = "11.8"
+  engine_version = "11.10"
   instance_class = "db.t2.micro"
   identifier = "${local.resource_tag}-db-instance"
   name = "mentorsuccess"
