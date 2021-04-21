@@ -14,4 +14,5 @@
 
 output "db_config" {
   value = aws_db_instance.database
+  sensitive = true
 }
