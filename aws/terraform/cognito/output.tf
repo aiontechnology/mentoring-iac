@@ -1,4 +1,4 @@
-# Copyright 2020 Aion Technology LLC
+# Copyright 2021 Aion Technology LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,10 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Terraform
-\.terraform
-terraform.tfstate
-terraform.tfstate.backup
-terraform.tfstate.d
-.terraform.lock.hcl
-workspaces
+output "cognito_client_id" {
+  value = aws_cognito_user_pool_client.user_pool_client.id
+}
+
+output "cognito_endpoint" {
+  value = "mentorsuccess-${local.resource_tag}.auth.us-west-2.amazoncognito.com"
+}
+
+output "cognito_pool_id" {
+  value = aws_cognito_user_pool.user_pool.id
+}
