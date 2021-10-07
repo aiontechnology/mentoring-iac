@@ -64,9 +64,22 @@ resource "aws_cognito_user_pool" "user_pool" {
   admin_create_user_config {
     allow_admin_create_user_only = true
     invite_message_template {
-      email_subject = "MentorSuccess Account"
+      email_subject = "Your new MentorSuccess account"
       email_message = <<EOF
-Hello. Your MentorSuccess account has been created. Your username is {username}. Your temporary password is {####}. You will be required to change it when you log in.
+<img src="https://mentorsuccess-public.s3.us-west-2.amazonaws.com/email-logo.png"></img>
+<p>
+Hello,
+<p>
+Welcome to MentorSuccess. Your new account has been created. Please log in <a href="https://test.mentorsuccess.aiontechnology.io/">here</a>.
+<p>
+Your temporary credentials are
+<br>&nbsp;&nbsp;&nbsp;&nbsp;Username: {username}
+<br>&nbsp;&nbsp;&nbsp;&nbsp;Password: {####}
+<p>
+You will be required to change them when you log in.
+<p>
+Thank You!
+<br>MentorSuccess
       EOF
       sms_message = "Your MentorSuccess username is {username} and temporary password is {####}. "
     }
