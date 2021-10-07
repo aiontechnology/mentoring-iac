@@ -26,6 +26,7 @@ output "cognito_endpoint" {
 
 output "db_password" {
   value = module.database.db_config.password
+  sensitive = true
 }
 
 output "ui_lb_dns_name" {
