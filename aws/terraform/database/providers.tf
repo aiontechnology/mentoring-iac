@@ -12,10 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Terraform
-\.terraform
-terraform.tfstate
-terraform.tfstate.backup
-terraform.tfstate.d
-.terraform.lock.hcl
-workspaces
+provider "aws" {
+  region = var.general.region
+  profile = "hhf-whitney"
+}
