@@ -70,7 +70,7 @@ resource "aws_cognito_user_pool" "user_pool" {
 <p>
 Hello,
 <p>
-Welcome to MentorSuccess. Your new account has been created. Please log in <a href="https://test.mentorsuccess.aiontechnology.io/">here</a>.
+Welcome to MentorSuccess™. Your new account has been created. Please log in <a href="https://test.mentorsuccess.aiontechnology.io/">here</a>.
 <p>
 Your temporary credentials are
 <br>&nbsp;&nbsp;&nbsp;&nbsp;Username: {username}
@@ -79,7 +79,7 @@ Your temporary credentials are
 You will be required to change them when you log in.
 <p>
 Thank You!
-<br>MentorSuccess
+<br>MentorSuccess™
       EOF
       sms_message = "Your MentorSuccess username is {username} and temporary password is {####}. "
     }
