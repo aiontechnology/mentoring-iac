@@ -1,4 +1,4 @@
-# Copyright 2020 Aion Technology LLC
+# Copyright 2021 Aion Technology LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,10 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Terraform
-\.terraform
-terraform.tfstate
-terraform.tfstate.backup
-terraform.tfstate.d
-.terraform.lock.hcl
-workspaces
+output "cluster_id" {
+  value = aws_ecs_cluster.cluster.id
+}
+
+output "service-execution-role" {
+  value = aws_iam_role.service_task_execution_role
+}
+
+output "lpg-execution-role" {
+  value = aws_iam_role.lpg_task_execution_role
+}

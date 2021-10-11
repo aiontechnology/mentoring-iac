@@ -12,10 +12,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Terraform
-\.terraform
-terraform.tfstate
-terraform.tfstate.backup
-terraform.tfstate.d
-.terraform.lock.hcl
-workspaces
+terraform {
+  required_version = ">= 0.13"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 3.22.0"
+    }
+    local = {
+      source  = "hashicorp/local"
+      version = "~> 1.2"
+    }
+    random = {
+      source  = "hashicorp/random"
+      version = "~> 2.1"
+    }
+    template = {
+      source  = "hashicorp/template"
+      version = "~> 2.1"
+    }
+  }
+}

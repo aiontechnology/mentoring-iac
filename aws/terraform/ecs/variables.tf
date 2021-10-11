@@ -1,4 +1,4 @@
-# Copyright 2020 Aion Technology LLC
+# Copyright 2021 Aion Technology LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,10 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Terraform
-\.terraform
-terraform.tfstate
-terraform.tfstate.backup
-terraform.tfstate.d
-.terraform.lock.hcl
-workspaces
+####################################################################################################
+# General configuration
+####################################################################################################
+variable "general" {
+  description = "General configuration."
+  type = object({
+    environment = string
+    name = string
+    region = string
+  })
+
+  default = {
+    environment = "test"
+    name = "mentorsuccess"
+    region = "us-west-2"
+  }
+}
+
