@@ -24,6 +24,7 @@ locals {
 # Create container definition
 ################################################################################
 resource "aws_cloudwatch_log_group" "ecs-log-group" {
+  name = local.log_name
   tags = {
     Environment = var.general.environment
     Application = local.log_name
@@ -44,13 +45,13 @@ resource "aws_ecs_task_definition" "lpg" {
     "image": "661143960593.dkr.ecr.us-west-2.amazonaws.com/mentorsuccess-lpg:${var.docker.tag}",
     "name": "mentorsuccess-lpg",
     "logConfiguration": {
-                "logDriver": "awslogs",
-                "options": {
-                    "awslogs-region" : "us-west-2",
-                    "awslogs-group" : "${aws_cloudwatch_log_group.ecs-log-group.name}",
-                    "awslogs-stream-prefix" : "${local.resource_tag}-lpg"
-                }
-            },
+      "logDriver": "awslogs",
+      "options": {
+          "awslogs-region" : "us-west-2",
+          "awslogs-group" : "${aws_cloudwatch_log_group.ecs-log-group.name}",
+          "awslogs-stream-prefix" : "${local.resource_tag}-lpg"
+      }
+    },
     "secrets": [],
     "environment": [
       {

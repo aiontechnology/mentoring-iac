@@ -100,3 +100,14 @@ variable "spring" {
     profile = string
   })
 }
+
+####################################################################################################
+# Email related configuration
+####################################################################################################
+variable "email" {
+  description = "Email server configuration."
+  type = object({
+    username = string
+    password = string
+  })
+}
