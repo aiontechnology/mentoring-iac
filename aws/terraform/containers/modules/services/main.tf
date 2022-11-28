@@ -24,6 +24,7 @@ locals {
 # Create container definition
 ################################################################################
 resource "aws_cloudwatch_log_group" "ecs-log-group" {
+  name = local.log_name
   tags = {
     Environment = var.general.environment
     Application = local.log_name
@@ -44,13 +45,13 @@ resource "aws_ecs_task_definition" "server" {
     "image": "661143960593.dkr.ecr.${var.general.region}.amazonaws.com/mentorsuccess-server:${var.docker.tag}",
     "name": "mentorsuccess-server",
     "logConfiguration": {
-                "logDriver": "awslogs",
-                "options": {
-                    "awslogs-region" : "${var.general.region}",
-                    "awslogs-group" : "${aws_cloudwatch_log_group.ecs-log-group.name}",
-                    "awslogs-stream-prefix" : "${local.resource_tag}-server"
-                }
-            },
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-region" : "${var.general.region}",
+        "awslogs-group" : "${aws_cloudwatch_log_group.ecs-log-group.name}",
+        "awslogs-stream-prefix" : "${local.resource_tag}-server"
+      }
+    },
     "secrets": [],
     "environment": [
       {
@@ -72,6 +73,14 @@ resource "aws_ecs_task_definition" "server" {
       {
         "name": "AWS_COGNITO_USERPOOLID",
         "value": "${var.cognito.pool_id}"
+      },
+      {
+        "name": "FLOWABLE_MAIL_SERVER_USERNAME",
+        "value": "${var.email.username}"
+      },
+      {
+        "name": "FLOWABLE_MAIL_SERVER_PASSWORD",
+        "value": "${var.email.password}"
       }
     ],
     "portMappings": [

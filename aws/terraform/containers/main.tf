@@ -23,6 +23,7 @@ module "services" {
   networking = var.networking
   service = var.service
   spring = var.spring
+  email = var.email
 }
 
 module "lpg" {

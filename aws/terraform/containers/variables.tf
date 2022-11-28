@@ -112,11 +112,23 @@ variable "spring" {
 }
 
 ####################################################################################################
+# Email related configuration
+####################################################################################################
+variable "email" {
+  description = "Email server configuration."
+  type = object({
+    username = string
+    password = string
+  })
+}
+
+####################################################################################################
 # UI configuration
 ####################################################################################################
 variable "ui" {
   description = "Configuration for the UI container"
   type = object({
+    base_uri = string
     execution_role_arn = string
     logout_redirect = string
     subnet_ids = list(string)
