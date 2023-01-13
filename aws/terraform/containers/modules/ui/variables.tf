@@ -20,7 +20,6 @@ variable "cognito" {
   type = object({
     pool_id = string
     client_id = string
-    pool_id = string
   })
 }
 ####################################################################################################
