@@ -18,9 +18,8 @@
 variable "cognito" {
   description = "Configuration for the Cognito pool. This info should be from the Cognito script."
   type = object({
-    client_id = string
-    endpoint = string
     pool_id = string
+    client_id = string
   })
 }
 ####################################################################################################
@@ -90,9 +89,7 @@ variable "ui" {
   type = object({
     base_uri = string
     execution_role_arn = string
-    logout_redirect = string
     subnet_ids = list(string)
     sg = string
-    token_redirect = string
   })
 }

@@ -63,14 +63,6 @@ resource "aws_ecs_task_definition" "ui" {
         "value": "${var.ui.base_uri}"
       },
       {
-        "name": "TOKEN_REDIRECT",
-        "value": "${var.ui.token_redirect}"
-      },
-      {
-        "name": "LOGOUT_TOKEN_REDIRECT",
-        "value": "${var.ui.logout_redirect}"
-      },
-      {
         "name": "API_URL",
         "value": "${var.containers.service_url}"
       },
@@ -79,12 +71,12 @@ resource "aws_ecs_task_definition" "ui" {
         "value": "${var.containers.lpg_url}"
       },
       {
-        "name": "COGNITO_CLIENT_ID",
-        "value": "${var.cognito.client_id}"
+        "name": "COGNITO_POOL_ID",
+        "value": "${var.cognito.pool_id}"
       },
       {
-        "name": "COGNITO_BASE_URL",
-        "value": "${var.cognito.endpoint}"
+        "name": "COGNITO_CLIENT_ID",
+        "value": "${var.cognito.client_id}"
       }
     ],
     "portMappings": [
