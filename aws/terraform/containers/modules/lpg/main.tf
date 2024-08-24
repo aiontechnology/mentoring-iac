@@ -42,8 +42,8 @@ resource "aws_ecs_task_definition" "lpg" {
   container_definitions = <<DEFINITION
 [
   {
-    "image": "661143960593.dkr.ecr.us-west-2.amazonaws.com/mentorsuccess-lpg:${var.docker.tag}",
-    "name": "mentorsuccess-lpg",
+    "image": "881490093754.dkr.ecr.us-west-2.amazonaws.com/lpg:${var.docker.tag}",
+    "name": "lpg",
     "logConfiguration": {
       "logDriver": "awslogs",
       "options": {
@@ -151,7 +151,7 @@ resource "aws_service_discovery_service" "service-discovery" {
 # Create service
 ################################################################################
 data "aws_ecs_container_definition" "lpg-definition" {
-  container_name = "mentorsuccess-lpg"
+  container_name = "lpg"
   task_definition = aws_ecs_task_definition.lpg.id
 }
 

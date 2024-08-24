@@ -17,7 +17,7 @@ output "cognito_client_id" {
 }
 
 output "cognito_endpoint" {
-  value = "mentorsuccess-${local.resource_tag}.auth.us-west-2.amazoncognito.com"
+  value = "tlydf-${local.resource_tag}.auth.us-west-2.amazoncognito.com"
 }
 
 output "cognito_pool_id" {

@@ -36,7 +36,7 @@ variable "general" {
 
   default = {
     environment = "test"
-    name = "mentorsuccess"
+    name = "tlydf"
     region = "us-west-2"
   }
 }

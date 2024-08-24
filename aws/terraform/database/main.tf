@@ -37,7 +37,7 @@ resource "aws_db_instance" "database" {
   engine_version = var.db.engine_version
   instance_class = var.db.class
   identifier = "${local.resource_tag}-db-instance"
-  name = "mentorsuccess"
+  db_name = "tlydf"
   username = "postgres"
   password = local.db_password
   db_subnet_group_name = aws_db_subnet_group.db_subnet_group.name

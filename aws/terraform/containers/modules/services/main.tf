@@ -42,8 +42,8 @@ resource "aws_ecs_task_definition" "server" {
   container_definitions = <<DEFINITION
 [
   {
-    "image": "661143960593.dkr.ecr.${var.general.region}.amazonaws.com/mentorsuccess-server:${var.docker.tag}",
-    "name": "mentorsuccess-server",
+    "image": "881490093754.dkr.ecr.us-west-2.amazonaws.com/services:${var.docker.tag}",
+    "name": "services",
     "logConfiguration": {
       "logDriver": "awslogs",
       "options": {
@@ -56,7 +56,7 @@ resource "aws_ecs_task_definition" "server" {
     "environment": [
       {
         "name": "SPRING_DATASOURCE_URL",
-        "value": "jdbc:postgresql://${var.db.endpoint}/mentorsuccess"
+        "value": "jdbc:postgresql://${var.db.endpoint}/tlydf"
       },
       {
         "name": "SPRING_DATASOURCE_PASSWORD",
@@ -142,7 +142,7 @@ resource "aws_service_discovery_service" "service-discovery" {
 # Create service
 ################################################################################
 data "aws_ecs_container_definition" "server-definition" {
-  container_name = "mentorsuccess-server"
+  container_name = "services"
   task_definition = aws_ecs_task_definition.server.id
 }
 
