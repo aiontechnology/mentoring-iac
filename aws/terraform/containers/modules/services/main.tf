@@ -1,4 +1,4 @@
-# Copyright 2021 Aion Technology LLC
+# Copyright 2021-2025 Aion Technology LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -42,8 +42,8 @@ resource "aws_ecs_task_definition" "server" {
   container_definitions = <<DEFINITION
 [
   {
-    "image": "881490093754.dkr.ecr.us-west-2.amazonaws.com/services:${var.docker.tag}",
-    "name": "services",
+    "image": "600627363258.dkr.ecr.us-west-2.amazonaws.com/services:${var.docker.tag}",
+    "name": "mentoring-server",
     "logConfiguration": {
       "logDriver": "awslogs",
       "options": {
@@ -142,11 +142,11 @@ resource "aws_service_discovery_service" "service-discovery" {
 # Create service
 ################################################################################
 data "aws_ecs_container_definition" "server-definition" {
-  container_name = "services"
+  container_name = "mentoring-server"
   task_definition = aws_ecs_task_definition.server.id
 }
 
-resource "aws_ecs_service" "mentorsuccess-server" {
+resource "aws_ecs_service" "mentoring-server" {
   name = "${local.resource_tag}-server"
   cluster = var.ecs.cluster_id
   task_definition = aws_ecs_task_definition.server.arn

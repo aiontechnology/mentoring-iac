@@ -1,4 +1,4 @@
-# Copyright 2021 Aion Technology LLC
+# Copyright 2021-2025 Aion Technology LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -42,8 +42,8 @@ resource "aws_ecs_task_definition" "ui" {
   container_definitions = <<DEFINITION
 [
   {
-    "image": "881490093754.dkr.ecr.us-west-2.amazonaws.com/ui:${var.docker.tag}",
-    "name": "ui",
+    "image": "600627363258.dkr.ecr.us-west-2.amazonaws.com/ui:${var.docker.tag}",
+    "name": "mentorsuccess-ui",
     "logConfiguration": {
       "logDriver": "awslogs",
       "options": {
