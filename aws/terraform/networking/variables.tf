@@ -1,4 +1,4 @@
-# Copyright 2021 Aion Technology LLC
+# Copyright 2021-2024 Aion Technology LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@ variable "general" {
 
   default = {
     environment = "test"
-    name = "mentorsuccess"
+    name = "unset"
     region = "us-west-2"
   }
 }

@@ -42,7 +42,7 @@ resource "aws_ecs_task_definition" "server" {
   container_definitions = <<DEFINITION
 [
   {
-    "image": "661143960593.dkr.ecr.${var.general.region}.amazonaws.com/mentorsuccess-server:${var.docker.tag}",
+    "image": "881490093754.dkr.ecr.us-west-2.amazonaws.com/services:${var.docker.tag}",
     "name": "mentorsuccess-server",
     "logConfiguration": {
       "logDriver": "awslogs",

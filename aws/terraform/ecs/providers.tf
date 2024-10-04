@@ -14,5 +14,5 @@
 
 provider "aws" {
   region = var.general.region
-  profile = "hhf-whitney"
+  profile = "tlydf-whitney"
 }

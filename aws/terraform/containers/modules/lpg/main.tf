@@ -42,7 +42,7 @@ resource "aws_ecs_task_definition" "lpg" {
   container_definitions = <<DEFINITION
 [
   {
-    "image": "661143960593.dkr.ecr.us-west-2.amazonaws.com/mentorsuccess-lpg:${var.docker.tag}",
+    "image": "881490093754.dkr.ecr.us-west-2.amazonaws.com/lpg:${var.docker.tag}",
     "name": "mentorsuccess-lpg",
     "logConfiguration": {
       "logDriver": "awslogs",

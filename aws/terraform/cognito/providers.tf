@@ -1,4 +1,4 @@
-# Copyright 2020 Aion Technology LLC
+# Copyright 2020-2024 Aion Technology LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,5 +14,5 @@
 
 provider "aws" {
   region = var.general.region
-  profile = "hhf-whitney"
+  profile = "tlydf-whitney"
 }

@@ -1,4 +1,4 @@
-# Copyright 2021 Aion Technology LLC
+# Copyright 2021-2024 Aion Technology LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -37,7 +37,6 @@ resource "aws_db_instance" "database" {
   engine_version = var.db.engine_version
   instance_class = var.db.class
   identifier = "${local.resource_tag}-db-instance"
-  name = "mentorsuccess"
   username = "postgres"
   password = local.db_password
   db_subnet_group_name = aws_db_subnet_group.db_subnet_group.name

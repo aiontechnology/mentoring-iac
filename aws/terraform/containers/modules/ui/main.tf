@@ -42,7 +42,7 @@ resource "aws_ecs_task_definition" "ui" {
   container_definitions = <<DEFINITION
 [
   {
-    "image": "661143960593.dkr.ecr.us-west-2.amazonaws.com/mentorsuccess-ui:${var.docker.tag}",
+    "image": "881490093754.dkr.ecr.us-west-2.amazonaws.com/ui:${var.docker.tag}",
     "name": "mentorsuccess-ui",
     "logConfiguration": {
       "logDriver": "awslogs",

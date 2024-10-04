@@ -1,4 +1,4 @@
-# Copyright 2020 Aion Technology LLC
+# Copyright 2020-2024 Aion Technology LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,19 +13,19 @@
 # limitations under the License.
 
 terraform {
-  required_version = ">= 0.13"
+  required_version = ">= 1.8.2"
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 4.20.1"
+      version = "~> 5.69.0"
     }
     local = {
       source  = "hashicorp/local"
-      version = "~> 2.2.3"
+      version = "~> 2.5.2"
     }
     random = {
       source  = "hashicorp/random"
-      version = "~> 3.3.2"
+      version = "~> 3.6.3"
     }
     template = {
       source  = "hashicorp/template"

@@ -60,7 +60,7 @@ variable "general" {
 
   default = {
     environment = "test"
-    name = "mentorsuccess"
+    name = "unset"
     region = "us-west-2"
   }
 }
