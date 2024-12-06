@@ -56,7 +56,7 @@ resource "aws_ecs_task_definition" "server" {
     "environment": [
       {
         "name": "SPRING_DATASOURCE_URL",
-        "value": "jdbc:postgresql://${var.db.endpoint}/mentorsuccess"
+        "value": "jdbc:postgresql://${var.db.endpoint}/tlydf"
       },
       {
         "name": "SPRING_DATASOURCE_PASSWORD",

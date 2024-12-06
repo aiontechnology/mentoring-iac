@@ -32,6 +32,7 @@ resource "aws_db_subnet_group" "db_subnet_group" {
 }
 
 resource "aws_db_instance" "database" {
+  db_name = "tlydf"
   allocated_storage = 10
   engine = "postgres"
   engine_version = var.db.engine_version
