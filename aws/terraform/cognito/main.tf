@@ -66,7 +66,7 @@ resource "aws_cognito_user_pool" "user_pool" {
     invite_message_template {
       email_subject = "Your new Inspire Success account"
       email_message = <<EOF
-# <img src="https://mentorsuccess-public.s3.us-west-2.amazonaws.com/email-logo.png"></img>
+# <img src="https://mentoring-public.s3.us-west-2.amazonaws.com/email-logo.png"></img>
 <p>
 Hello,
 <p>
@@ -99,7 +99,7 @@ resource "aws_cognito_user_pool_client" "user_pool_client" {
 }
 
 resource "aws_cognito_user_pool_domain" "user_pool_domain" {
-  domain = "mentorsuccess-${local.resource_tag}"
+  domain = "mentoring-${local.resource_tag}"
   user_pool_id = aws_cognito_user_pool.user_pool.id
 }
 
