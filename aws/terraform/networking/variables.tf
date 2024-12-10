@@ -25,7 +25,7 @@ variable "general" {
 
   default = {
     environment = "test"
-    name = "unset"
+    name = "mentoring"
     region = "us-west-2"
   }
 }
