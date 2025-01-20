@@ -1,4 +1,4 @@
-# Copyright 2021 Aion Technology LLC
+# Copyright 2021-2025 Aion Technology LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -42,8 +42,8 @@ resource "aws_ecs_task_definition" "lpg" {
   container_definitions = <<DEFINITION
 [
   {
-    "image": "881490093754.dkr.ecr.us-west-2.amazonaws.com/lpg:${var.docker.tag}",
-    "name": "lpg",
+    "image": "600627363258.dkr.ecr.us-west-2.amazonaws.com/generator:${var.docker.tag}",
+    "name": "mentoring-lpg",
     "logConfiguration": {
       "logDriver": "awslogs",
       "options": {
@@ -151,11 +151,11 @@ resource "aws_service_discovery_service" "service-discovery" {
 # Create service
 ################################################################################
 data "aws_ecs_container_definition" "lpg-definition" {
-  container_name = "lpg"
+  container_name = "mentoring-lpg"
   task_definition = aws_ecs_task_definition.lpg.id
 }
 
-resource "aws_ecs_service" "mentorsuccess-lpg" {
+resource "aws_ecs_service" "mentoring-lpg" {
   name = "${local.resource_tag}-lpg"
   cluster = var.ecs.cluster_id
   task_definition = aws_ecs_task_definition.lpg.arn

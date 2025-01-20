@@ -1,4 +1,4 @@
-# Copyright 2021 Aion Technology LLC
+# Copyright 2021-2025 Aion Technology LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -32,12 +32,12 @@ resource "aws_db_subnet_group" "db_subnet_group" {
 }
 
 resource "aws_db_instance" "database" {
+  db_name = "tlydf"
   allocated_storage = 10
   engine = "postgres"
   engine_version = var.db.engine_version
   instance_class = var.db.class
   identifier = "${local.resource_tag}-db-instance"
-  db_name = "tlydf"
   username = "postgres"
   password = local.db_password
   db_subnet_group_name = aws_db_subnet_group.db_subnet_group.name

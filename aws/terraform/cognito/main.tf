@@ -1,4 +1,4 @@
-# Copyright 2021 Aion Technology LLC
+# Copyright 2021-2025 Aion Technology LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -64,13 +64,13 @@ resource "aws_cognito_user_pool" "user_pool" {
   admin_create_user_config {
     allow_admin_create_user_only = true
     invite_message_template {
-      email_subject = "Your new MentorSuccess account"
+      email_subject = "Your new InspireSuccess account"
       email_message = <<EOF
-<img src="https://mentorsuccess-public.s3.us-west-2.amazonaws.com/email-logo.png"></img>
+# <img src="https://mentoring-public.s3.us-west-2.amazonaws.com/email-logo.png"></img>
 <p>
 Hello,
 <p>
-Welcome to MentorSuccess™. Your new account has been created. Please log in <a href="https://test.mentorsuccess.aiontechnology.io/">here</a>.
+Welcome to InspireSuccess™. Your new account has been created. Please log in <a href="https://mentoring.inspiresuccess.co/">here</a>.
 <p>
 Your temporary credentials are
 <br>&nbsp;&nbsp;&nbsp;&nbsp;Username: {username}
@@ -79,9 +79,9 @@ Your temporary credentials are
 You will be required to change them when you log in.
 <p>
 Thank You!
-<br>MentorSuccess™
+<br>InspireSuccess™
       EOF
-      sms_message = "Your MentorSuccess username is {username} and temporary password is {####}. "
+      sms_message = "Your InspireSuccess username is {username} and temporary password is {####}. "
     }
   }
 }
@@ -99,7 +99,7 @@ resource "aws_cognito_user_pool_client" "user_pool_client" {
 }
 
 resource "aws_cognito_user_pool_domain" "user_pool_domain" {
-  domain = "mentorsuccess-${local.resource_tag}"
+  domain = "mentoring-${local.resource_tag}"
   user_pool_id = aws_cognito_user_pool.user_pool.id
 }
 
